@@ -1,0 +1,7 @@
+# The following files and directories should be ignored by git
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+# End of ignore list
