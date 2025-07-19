@@ -2,15 +2,19 @@ const express = require('express');
 const router = express.Router();
 const messageController = require('../controllers/messageController');
 
-// Add validation or authentication middleware here if needed
-// Example: const { authenticate } = require('../middleware/authenticate');
+// Uncomment and use authentication middleware if needed
+// const { authenticate } = require('../middleware/authenticate');
 
 // Get all messages
-router.get('/', /* authenticate, */ messageController.getMessages);
+router.get('/', messageController.getMessages);
 
-// You can add more routes as needed, e.g.:
-// router.post('/', messageController.createMessage);
-// router.get('/:id', messageController.getMessageById);
-// router.delete('/:id', messageController.deleteMessage);
+// Create a new message
+router.post('/', messageController.createMessage);
+
+// Get a message by ID
+router.get('/:id', messageController.getMessageById);
+
+// Delete a message by ID
+router.delete('/:id', messageController.deleteMessage);
 
 module.exports = router;

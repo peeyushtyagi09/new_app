@@ -9,7 +9,7 @@ import PasswordModal from './PasswordModal';
 let socketInstance = null;
 const getSocket = () => {
   if (!socketInstance) {
-    socketInstance = io('http://localhost:5000', { transports: ['websocket'] });
+    socketInstance = io(import.meta.env.VITE_BACKEND_URL, { transports: ['websocket'] });
   }
   return socketInstance;
 };
@@ -40,7 +40,7 @@ const Chat = () => {
       setCheckingBlock(true);
       setBlocked(false);
       try {
-        const res = await axios.get('http://localhost:5000/api/password/check-blocked', {
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/password/check-blocked`, {
           params: { email: user?.email },
           headers: { 'x-device-fingerprint': getDeviceFingerprint() },
         });
@@ -73,7 +73,7 @@ const Chat = () => {
     setLoading(true);
     setError('');
     axios
-      .get('http://localhost:5000/api/messages')
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/messages`)
       .then((res) => {
         if (isMounted) {
           setChat(Array.isArray(res.data) ? res.data : []);

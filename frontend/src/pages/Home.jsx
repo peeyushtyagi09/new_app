@@ -22,7 +22,7 @@ const Home = () => {
     setCheckingBlock(true);
     setBlocked(false);
     try {
-      const res = await axios.get('http://localhost:5000/api/password/check-blocked', {
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/password/check-blocked`, {
         params: { email: user?.email },
         headers: { 'x-device-fingerprint': getDeviceFingerprint() },
       });

@@ -19,7 +19,9 @@ const server = http.createServer(app);
 
 const allowedOrigins = [
   'http://localhost:3000',
-  'http://localhost:5173'
+  'http://localhost:5173',
+  'https://efgb.netlify.app', // Add your Netlify frontend URL
+  'https://*.netlify.app' // Allow all Netlify subdomains
 ];
 
 const io = new Server(server, {
@@ -99,7 +101,7 @@ io.on('connection', (socket) => {
 });
 
 // Start server only after DB connection is established
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

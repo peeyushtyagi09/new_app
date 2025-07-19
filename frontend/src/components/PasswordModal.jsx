@@ -37,7 +37,7 @@ const PasswordModal = ({ email, onSuccess, onBlocked }) => {
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/password/check',
+        `${import.meta.env.VITE_BACKEND_URL}/api/password/check`,
         { password, email },
         {
           headers: {

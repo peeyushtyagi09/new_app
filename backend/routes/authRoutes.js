@@ -67,7 +67,8 @@ router.get('/google/callback', passport.authenticate('google', {
   session: true
 }), (req, res) => {
   // Redirect to chat or frontend home after successful login
-  res.redirect('http://localhost:5173/chat');
+  const frontendUrl = process.env.FRONTEND_URL;
+  res.redirect(`${frontendUrl}/chat`);
 });
 
 // Logout
